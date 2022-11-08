@@ -17,5 +17,5 @@ void main() async {
   Dependency.init();
   await Hive.initFlutter();
   await Di.get<AppState>().initAppState();
-  runApp(const trading());
+  runApp(Trading());
 }

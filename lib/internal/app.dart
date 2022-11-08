@@ -1,25 +1,16 @@
 import 'package:trading/common/theme.dart';
-import 'package:trading/common/ui_colors.dart';
 import 'package:trading/common/ui_text.dart';
-import 'package:trading/core/types/types.dart';
-import 'package:trading/domain/entitis/stock_entity.dart';
-import 'package:trading/domain/entitis/user_entity.dart';
 import 'package:trading/domain/state/app_state/app_state.dart';
 import 'package:trading/internal/injection/di.dart';
 import 'package:trading/internal/injection/register.dart';
-import 'package:trading/presentation/forms/form_buy_sale.dart';
 import 'package:trading/presentation/route/go_routing.dart';
 import 'package:trading/domain/state/auth/auth_bloc.dart';
-import 'package:trading/domain/state/category/category_bloc.dart';
 import 'package:trading/internal/dependencies/repository_module.dart';
-
-import 'package:trading/presentation/widgets/box_decor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
-class trading extends StatelessWidget {
-  tradingAll({Key? key}) : super(key: key);
+class Trading extends StatelessWidget {
+  Trading({Key? key}) : super(key: key);
 
   final routConfig = Routing(
     onTapNaviBar: (value) => Di.get<AppState>().initPath = value,
@@ -56,3 +47,37 @@ class trading extends StatelessWidget {
   }
 }
 
+class InitApp extends StatefulWidget {
+  const InitApp({required this.child, this.init, this.dispose, Key? key})
+      : super(key: key);
+
+  final Widget child;
+  final VoidCallback? init;
+  final VoidCallback? dispose;
+
+  @override
+  State<InitApp> createState() => _InitAppState();
+}
+
+class _InitAppState extends State<InitApp> {
+  @override
+  void initState() {
+    super.initState();
+    if (widget.init != null) {
+      widget.init;
+    }
+  }
+
+  @override
+  void dispose() {
+    if (widget.dispose != null) {
+      widget.dispose;
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return widget.child;
+  }
+}
