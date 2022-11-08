@@ -1,0 +1,11 @@
+name: stream_extension
+description: Stream extention
+publish_to: none
+
+environment:
+  sdk: ">=2.17.0-282.0.dev <3.0.0"
+  
+dependencies:
+
+
+dev_dependencies:
